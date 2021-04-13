@@ -18,11 +18,7 @@ import javax.swing.JLabel;
  */
 public class MainFrame extends javax.swing.JFrame {
     
-    //variables para imagenes
-    
-    /**
-     * Creates new form MainFrame
-     */
+
     public MainFrame() {
         initComponents();
         
