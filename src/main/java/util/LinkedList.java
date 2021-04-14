@@ -18,7 +18,7 @@ public class LinkedList<TypeOfData> {
 
     Node<TypeOfData> head;
     Node<TypeOfData> tail;
-    Integer count = 0;
+    public Integer count = 0;
     
     public LinkedList() {
         makeEmpty();
@@ -183,7 +183,7 @@ public class LinkedList<TypeOfData> {
         return tail.data;
     }
 
-    TypeOfData elementPosition(int k){ //Retorna únicamente el valor (no el nodo) del elemento en la posición K
+    public TypeOfData elementPosition(int k){ //Retorna únicamente el valor (no el nodo) del elemento en la posición K
         return read(k).data;
     }
 

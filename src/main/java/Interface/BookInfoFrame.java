@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Information.Book;
+import Information.MyBooks;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -14,22 +16,47 @@ import javax.swing.ImageIcon;
  */
 public class BookInfoFrame extends javax.swing.JFrame {
     
-    private String bookName = "100 años de soledad";
-    private String author = "Gabriel García Márquez";
-    private String estate = "Empezado";
-    private String isbn = "1245678234";
-    private Integer lastPage = 120;
-    private String category = "Realismo mágico";
+    private MyBooks myBooks;
+    private Book actualBook;
+    private String bookName;
+    private String author;
+    private Boolean estate;
+    private String isbn;
+    private Integer lastPage;
+    private String category;
+    private int bookId;
     
     /**
      * Creates new form NewBookFrame
      */
-    public BookInfoFrame() {
+    public BookInfoFrame(Book book, MyBooks myBooks) {
+        this.myBooks = myBooks;
+        this.actualBook = book;
+        this.bookName = this.actualBook.getBookInformation().getName();
+        this.author = this.actualBook.getBookInformation().getAuthor();
+        this.estate = this.actualBook.getStatus();
+        this.isbn = this.actualBook.getBookInformation().getIsbn();
+        this.lastPage = this.actualBook.getActualPage();
+        this.category = this.actualBook.getBookInformation().getCategory();
+        this.bookId = this.actualBook.getBookInformation().getId();
         initComponents();
         //print logo
-        Util.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
         //escribe el nombre del libro en el JPanel
-        Util.setPanelText(bookName, this.jPNewBook);
+        UtilInterface.setPanelText(bookName, this.jPNewBook);
+        //escribe el resto de la información del libro en los jtextfield
+        this.completeLabels();
+        System.out.println("Interface.BookInfoFrame.<init>()");
+        this.myBooks.printAllBooks();
+        
+    }
+    public BookInfoFrame() {
+        //this.actualBook = book;
+        initComponents();
+        //print logo
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        //escribe el nombre del libro en el JPanel
+        UtilInterface.setPanelText(bookName, this.jPNewBook);
         //escribe el resto de la información del libro en los jtextfield
         this.completeLabels();
         
@@ -136,7 +163,6 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jTMyBooks.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTMyBooks.setGridColor(new java.awt.Color(255, 255, 255));
         jTMyBooks.setInheritsPopupMenu(true);
-        jTMyBooks.setRowHeight(20);
         jTMyBooks.getTableHeader().setReorderingAllowed(false);
         jSPMyBooks.setViewportView(jTMyBooks);
 
@@ -241,6 +267,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
         );
 
         JBMyBooks.setText("Página principal");
+        JBMyBooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBMyBooksActionPerformed(evt);
+            }
+        });
 
         jBFilter.setText("Filtrar");
 
@@ -312,6 +343,9 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void jBAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBookActionPerformed
         // TODO add your handling code here:
+        NewNoteFrame newNoteFrame= new NewNoteFrame(this.myBooks, this.actualBook);
+        newNoteFrame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jBAddBookActionPerformed
 
     private void jBAddBook1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBook1ActionPerformed
@@ -321,6 +355,13 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private void jBAddBook2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBook2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBAddBook2ActionPerformed
+
+    private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
+        // TODO add your handling code here:
+        MainFrame mainFrame= new MainFrame(this.myBooks);
+        mainFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_JBMyBooksActionPerformed
 
     /**
      * @param args the command line arguments

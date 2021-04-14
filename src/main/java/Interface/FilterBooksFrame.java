@@ -19,7 +19,7 @@ public class FilterBooksFrame extends javax.swing.JFrame {
      */
     public FilterBooksFrame() {
         initComponents();
-        Util.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
     }
 
     /**

@@ -4,27 +4,29 @@ import util.LinkedList;
 
 public class BookNotes extends Notes {
 
-    String bookName = null;
-
+    private int bookId = 0;
+    
+    private LinkedList<Notes> bookNotes;
+    
     public BookNotes() {
     }
 
-    public BookNotes(String bookName, String date, int page, int paragraph, String note) {
-        super(date, page, paragraph, note);
-        this.bookName = bookName;
+    public BookNotes(int bookId) {
+        bookNotes= new LinkedList<Notes>();
+        this.bookId = bookId;
     }
-    //BookNotes(nameBook,Notes)
-    LinkedList<Object> bookNotes = new LinkedList<>();
-
-    public LinkedList<Object> bookNotes() {
-
-        Notes notes = new Notes();
-
-        bookNotes.insertEnd(bookName);
-        bookNotes.insertEnd(notes.newNote());
-        
-        return bookNotes;
-
+    public void addNote(Notes newNote){
+        this.bookNotes.insertEnd(newNote);
+    }
+    
+    public String paintBookNotes(){
+        //add note to string into a note
+        String s = " {";
+        for(int i = 0; i<this.bookNotes.count;i++){
+            s= s + " [" + this.bookNotes.elementPosition(i).paintNote()+ "] ";
+        }
+        s = s+ "} ";
+        return " [ *"+ this.bookId+ "* , *"+ s +"* ]";
     }
 
 }

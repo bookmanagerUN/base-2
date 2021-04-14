@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  *
  * @author Usuario
  */
-public class Util {
+public class UtilInterface {
     
     public static void printImage(JLabel label, String location,JFrame frame){
         System.out.println("Interface.Util.printImage()");

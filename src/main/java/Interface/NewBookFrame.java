@@ -1,10 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interface;
 
+import Information.BookInformation;
+import Information.Book;
+import Information.MyBooks;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -13,13 +12,21 @@ import javax.swing.ImageIcon;
  * @author Usuario
  */
 public class NewBookFrame extends javax.swing.JFrame {
+    private MyBooks myBooks = new MyBooks() ;
+    
     
     /**
      * Creates new form NewBookFrame
      */
     public NewBookFrame() {
+        //this.myBooks = myBooks;
         initComponents();
-        Util.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+    }
+    public NewBookFrame(MyBooks myBooks) {
+        this.myBooks = myBooks;
+        initComponents();
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
     }
 
     /**
@@ -168,6 +175,11 @@ public class NewBookFrame extends javax.swing.JFrame {
         );
 
         JBMyBooks.setText("Mis libros");
+        JBMyBooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBMyBooksActionPerformed(evt);
+            }
+        });
 
         jBFilter.setText("Filtrar");
 
@@ -238,9 +250,34 @@ public class NewBookFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCancelActionPerformed
 
     private void jBAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBookActionPerformed
-        // TODO add your handling code here:
+        //  leer los campos de escritura
+        System.out.println("Interface.NewBookFrame.jBAddBookActionPerformed()");
+        String author = this.jTFAuthor.getText();
+        String name = this.jTFName.getText();
+        String isbn = this.jTFIsbn.getText();
+        String category = this.jTFCategory.getText();
+        
+        int id = this.ComputeId();//ejemplo
+        
+        BookInformation newBookInformation = new BookInformation(id, name, author, category, isbn);
+        Book newBook = new Book(newBookInformation,this.myBooks);
+        this.myBooks.printAllBooks();
+        
+        
     }//GEN-LAST:event_jBAddBookActionPerformed
 
+    private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
+        // TODO add your handling code here:
+        MainFrame mainFrame = new MainFrame(this.myBooks);
+        mainFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_JBMyBooksActionPerformed
+    //this metod should be in util or something like that 
+    private int ComputeId(){
+        System.out.println("Interface.NewBookFrame.ComputeId()");
+        return  50;//acceder a lista de libros y revisar cuantos tiene
+    }
+    
     /**
      * @param args the command line arguments
      */

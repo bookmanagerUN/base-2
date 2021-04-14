@@ -4,20 +4,65 @@ import util.LinkedList;
 
 public class Book {
 
-    int actualPage = 0;
-    boolean status = false;
-    LinkedList<Object> book = new LinkedList<>();
+    private int actualPage  = 0;
+    private boolean status  = false;
+    private BookInformation bookInformation;
+    private BookNotes notes ;
     
-    public Book(int id, String name, String author, String category) {
-        
-        BookInformation bI = new BookInformation(id, name, author, category);
-        //BookNotes bN = new BookNotes();
-        
-        book.insertEnd(bI.bookInformation());   
-        book.insertEnd(actualPage);
-        //book.insertEnd(bN.bookNotes());
-        book.insertEnd(status);
+    //setters
+    public void  setActualPage(int newPage){
+        this.actualPage = newPage;
+        //update txt
     }
+    public void setStatus (boolean newStatus){
+        this.status = newStatus;
+        //update txt
+    }
+    public void setBookInformation(BookInformation newBookInformation){
+        this.bookInformation = newBookInformation;
+        
+        //Update txt
+    }
+    public void setNotes(BookNotes newNotes){
+        this.notes=newNotes;
+        //update txt
+    }
+    //Getters
+    public int getActualPage(){
+        return this.actualPage;
+    }
+    public boolean getStatus(){
+        return this.status;
+    }
+    public BookInformation getBookInformation(){
+        return  this.bookInformation;
+    }
+    public BookNotes getNotes(){
+        return this.notes;
+    }
+    
+
+    //constructors
+
+
+    //created by user
+    public Book(BookInformation bI, MyBooks myBooks) {
+        //System.out.println("Information.Book.<init>()");
+        
+        //book info
+        this.bookInformation = bI;
+        
+        //default values:
+        this.actualPage = 0;
+        this.notes = new BookNotes(this.bookInformation.getId());
+        this.status = false;
+        //update list of books:
+        myBooks.insertBook(this);
+        
+        //update txt  
+    }
+    
+    
 
     public Book(int actualPage) {
         this.actualPage = actualPage;
@@ -32,5 +77,18 @@ public class Book {
         //libro con name
         //booknotes
     }
+    
+    
+    // methods
+    
+    
+    public void printBook (){
+        System.out.println("Information.Book.printBook()");
+        
+        String cadena = "[" + this.actualPage + "], "+"[" + this.status + "], "+ this.bookInformation.printBookInformation()+","+ this.notes.paintBookNotes();
+        System.out.println(cadena);
+    }
+    
+    
     
 }

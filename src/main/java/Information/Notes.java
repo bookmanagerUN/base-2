@@ -34,5 +34,8 @@ public class Notes {
         return notes;
         
     }
+    public String paintNote(){
+        return"{ *"+ this.date + "* , *" + this.page + "* , *" + this.paragraph + "* , *" + this.note + "* }"  ;
+    }
 
 }

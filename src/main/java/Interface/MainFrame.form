@@ -259,6 +259,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar libro"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBNewBookActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBNewInform">
           <Properties>

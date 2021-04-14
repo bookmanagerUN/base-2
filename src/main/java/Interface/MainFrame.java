@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Information.Book;
+import Information.MyBooks;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -17,7 +19,20 @@ import javax.swing.JLabel;
  * @author Usuario
  */
 public class MainFrame extends javax.swing.JFrame {
+    private MyBooks myBooks = new MyBooks();
     
+    public MainFrame(MyBooks myBooks) {
+        this.myBooks = myBooks;
+        initComponents();
+        
+        // cambiar headers de la tabla
+        this.jTMyBooks.getTableHeader().setFont(new Font("Tahoma", 1, 18));
+        this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
+        
+        //poner logo en JLabel
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        
+    }
 
     public MainFrame() {
         initComponents();
@@ -27,9 +42,10 @@ public class MainFrame extends javax.swing.JFrame {
         this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
         
         //poner logo en JLabel
-        Util.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
         
     }
+    
     
     
     //muestra la imagen en una [location] sobre un [label]
@@ -151,6 +167,11 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         jBNewBook.setText("Agregar libro");
+        jBNewBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNewBookActionPerformed(evt);
+            }
+        });
 
         jBNewInform.setText("Filtrar");
 
@@ -203,26 +224,30 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
-        /*// input (aún no se ha hecho): la justificación(string), tipo de solicitud(string)
-        int com_numero = Integer.parseInt( this.jTFmyBooks.getText());
-        String comentarios = this.selectComentarios(com_numero);
-        System.out.println(comentarios);
-        String tipo = this.selectTipo(com_numero);
-
-        ComentarioSolicitud est_com = new ComentarioSolicitud(); //nueva ventana de Comentario de solicitudes
-        est_com.setVisible(true);
-        if(comentarios != "Usted no ha hecho ninguna solicitud con ese número"){
-            est_com.set_tipo(tipo);
-        }
-
-        est_com.set_textArea(comentarios);
-        */
-        //this.dispose();
+        int id = Integer.parseInt(this.jTFmyBooks.getText());
+        //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
+        Book book = this.myBooks.getMyBooks().elementPosition(id);
+        System.out.println(id);
+        book.printBook();
+        BookInfoFrame bookInfo = new BookInfoFrame(book,this.myBooks);
+        bookInfo.setVisible(true);
+        this.dispose();
+        
+        
+        this.dispose();
     }//GEN-LAST:event_jBMyBooksActionPerformed
 
     private void jTFmyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFmyBooksActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFmyBooksActionPerformed
+
+    private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
+        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks); 
+        newBookFrame.setVisible(true);
+        this.dispose();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jBNewBookActionPerformed
 
     /**
      * @param args the command line arguments
