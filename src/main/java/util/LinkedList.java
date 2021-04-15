@@ -1,6 +1,7 @@
 package util;
 
 class Node<TypeOfData> {
+    //hola
 
     TypeOfData data;
     Node next;
