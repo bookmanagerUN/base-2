@@ -88,6 +88,16 @@ public class Book {
         String cadena = "[" + this.actualPage + "], "+"[" + this.status + "], "+ this.bookInformation.printBookInformation()+","+ this.notes.paintBookNotes();
         System.out.println(cadena);
     }
+    public void /*nameClass*/ toJson(){
+        actualPage = this.actualPage;
+        status =this.status;
+        int id = this.bookInformation.getId();
+        //.....
+        
+        
+        //return new nameClass(actualPage.....)
+        
+    }
     
     
     

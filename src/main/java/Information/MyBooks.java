@@ -47,5 +47,17 @@ public class MyBooks {
         }
         
     }
+    public void /*ClassName[]*/ toJason(){
+        for(int i =0;i<this.myBooks.count;i++){
+            
+            //ClassName[this.myBook.count] newArray;
+            //newarray.apend(this.myBook.getDato(i).toJason)
+            
+            
+        }
+        
+        //return newArray
+        
+    }
     
 }
