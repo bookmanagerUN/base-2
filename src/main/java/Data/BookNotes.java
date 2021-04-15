@@ -1,4 +1,4 @@
-package Information;
+package Data;
 
 import util.LinkedList;
 

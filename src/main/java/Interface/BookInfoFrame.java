@@ -5,8 +5,8 @@
  */
 package Interface;
 
-import Information.Book;
-import Information.MyBooks;
+import Data.Book;
+import Data.MyBooks;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 

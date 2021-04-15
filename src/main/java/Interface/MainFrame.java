@@ -5,8 +5,8 @@
  */
 package Interface;
 
-import Information.Book;
-import Information.MyBooks;
+import Data.Book;
+import Data.MyBooks;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;

@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package Interface;
-import Information.Book;
-import Information.BookInformation;
-import Information.BookNotes;
-import Information.MyBooks;
-import Information.Notes;
+import Data.Book;
+import Data.BookInformation;
+import Data.BookNotes;
+import Data.MyBooks;
+import Data.Notes;
 import java.nio.file.FileSystemNotFoundException;
 
 /**

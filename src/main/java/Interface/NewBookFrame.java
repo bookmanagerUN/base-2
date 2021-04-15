@@ -1,9 +1,9 @@
 
 package Interface;
 
-import Information.BookInformation;
-import Information.Book;
-import Information.MyBooks;
+import Data.BookInformation;
+import Data.Book;
+import Data.MyBooks;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
