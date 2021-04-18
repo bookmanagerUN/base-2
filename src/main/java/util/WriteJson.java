@@ -5,6 +5,14 @@
  */
 package util;
 
+import Data.Book;
+import Data.MyBooks;
+import Data.Notes;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Arrays;
+
 /**
  *
  * @author Usuario
@@ -53,6 +61,8 @@ public class WriteJson {
     public void crearjson(LinkedList<Book> myBook){
 
     }
+    
+    //dificil mantenimiento, es posible sacarse del array.
     public Object[] informationToArr(LinkedList<Object> bookInformation){
         Node<Object> aux = bookInformation.head;
         int size2 = bookInformation.count;
@@ -102,7 +112,7 @@ class AuxBook {
         this.actualPage = actualPage;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

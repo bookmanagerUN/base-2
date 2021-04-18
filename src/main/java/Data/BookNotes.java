@@ -8,6 +8,22 @@ public class BookNotes extends Notes {
     
     private LinkedList<Notes> bookNotes;
     
+    //setters
+    public void setId(int newId){
+        this.bookId= newId;
+    }
+    public void setBookNotes  (LinkedList<Notes> bookNotes){
+        this.bookNotes= bookNotes;
+    }
+    //getters
+    public int getId(){
+        return this.bookId;
+    }
+    public LinkedList<Notes> getBookNotes(){
+        return this.bookNotes;
+    }
+    
+    
     public BookNotes() {
     }
 
@@ -15,6 +31,12 @@ public class BookNotes extends Notes {
         bookNotes= new LinkedList<Notes>();
         this.bookId = bookId;
     }
+    
+    public BookNotes(int bookId,LinkedList<Notes> bookNotes) {
+        this.bookNotes= bookNotes;
+        this.bookId = bookId;
+    }
+    
     public void addNote(Notes newNote){
         this.bookNotes.insertEnd(newNote);
     }

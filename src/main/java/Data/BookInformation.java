@@ -81,6 +81,7 @@ public class BookInformation {
         bookInformation.insertEnd(name);
         bookInformation.insertEnd(author);
         bookInformation.insertEnd(category);
+        bookInformation.insertEnd(isbn);
 
         return bookInformation;
     }

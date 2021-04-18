@@ -61,6 +61,15 @@ public class Book {
         
         //update txt  
     }
+    //created by Json
+    public Book(BookInformation bookInformation, BookNotes bookNotes, int actualPage, boolean status) {
+        
+        this.bookInformation = bookInformation;
+        this.actualPage = actualPage;
+        this.notes = bookNotes;
+        this.status = status;
+          
+    }
     
     
 
