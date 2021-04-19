@@ -44,6 +44,7 @@ public class WriteJson {
 
             AuxBook auxBook = new AuxBook(actualPage,status,bookInformation,notes);
             arrBook[i] = auxBook;
+            aux = aux.next;
         }
         createJson(arrBook);
 
