@@ -63,7 +63,7 @@ public class ReadJson {
     // dificil mantenimiento, modificar clase auxBook
     public BookInformation auxToBookInformation(AuxBook auxBook){
         //save all the book information 
-        int id = (int) auxBook.getBookInformation()[0];
+        int id = (int) Math.round((double) auxBook.getBookInformation()[0]);
         String name = (String) auxBook.getBookInformation()[1];
         String author = (String) auxBook.getBookInformation()[2];
         String category = (String) auxBook.getBookInformation()[3];
